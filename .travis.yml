@@ -1,7 +1,6 @@
 language: fsharp
-solution: solution-name.sln
 mono:
   - latest
 script:
-    - ./test.sh
+    - mono simpleJackApp.exe
 
