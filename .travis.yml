@@ -1,4 +1,6 @@
 language: fsharp
+mono:
+  - latest
 script:
     - ./test.sh
 
