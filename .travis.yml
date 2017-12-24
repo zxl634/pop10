@@ -1,6 +1,6 @@
 language: fsharp
 before_install:
-  - sudo apt-get mono
+  - sudo apt-get mono-runtime
 mono:
   - latest
 script:
