@@ -1,2 +1,4 @@
-language: #F
+language: fsharp
+script:
+    - ./test.sh
 
