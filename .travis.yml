@@ -1,4 +1,5 @@
 language: fsharp
+solution: solution-name.sln
 mono:
   - latest
 script:
