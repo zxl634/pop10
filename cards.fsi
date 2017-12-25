@@ -1,5 +1,4 @@
 module Cards
-val toString : x:'a -> string
 val fromString : s:string -> 'a option
 type Suit =
   | Spades
@@ -35,5 +34,10 @@ type Score = | Score of int
 val generateRandomNumber : l:int -> int
 val drawCase : cases:Reflection.UnionCaseInfo [] -> Reflection.UnionCaseInfo
 val drawCard : Card
+val getName : x:Reflection.UnionCaseInfo -> string
+val constructCard : face:Face option -> suit:Suit option -> Card
+val drawFace : Face option
+val drawSuit : Suit option
+val drawCard2 : Card
 val getCardValue : card:Card -> int
 

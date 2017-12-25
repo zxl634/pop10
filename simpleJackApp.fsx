@@ -4,8 +4,28 @@
 *)
 open Cards
 open simpleJack
+(*
 let table = Table (2)
 printfn "%A" table
+*)
+
+
+(*
+let deck = createDeck
+printCard deck.[0]
+drawAndPrint deck
+drawAndPrint deck
+*)
+
+
+
+
+//let deck : Deck = [drawCard2; drawCard2]
+//printfn "%A" deck
+
+//facesCases |> List.map (fun x -> printfn "%A" x) 
+
+
 //table.turn ()
 (*
 //

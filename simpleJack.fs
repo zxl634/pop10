@@ -32,6 +32,7 @@ type Player () =
     | s when s < 21 -> "Still in the game!"
     | s when s > 21 -> "Bust!"
     | s when s = 21 -> "SimpleJack!"
+    | _ -> "Nothing..." // To prevent compiler complaint about incomplete pattern
 
  // inherit Participant()
 
