@@ -60,6 +60,9 @@ let constructCard (face:Face option) (suit:Suit option) : Card =
 let printCard (card : Card) =
   printfn "%A of %A" card.Face.Value card.Suit.Value
 
+let cardString (card : Card) : string =
+  sprintf "%A of %A" card.Face.Value card.Suit.Value
+
 // Kan nedenstående funktioner slås sammen i én?
 let drawFace : Face option =
   FSharpType.GetUnionCases(typeof<Face>)
@@ -89,7 +92,6 @@ let shuffleDeck (deck:Deck) : Deck =
     |> List.map (fun c -> (gen.Next (), c))
     |> List.sortBy fst |> List.map snd
 
-
 let drawCardFromDeck (deck:Deck) : Card =
   let shuffledDeck = shuffleDeck deck
   shuffledDeck.[0]
@@ -114,4 +116,30 @@ let getCardValue card : int =
   | Some Ten | Some Jack | Some Queen | Some King -> 10 
   | _ -> 0
 
-//printfn "Value of random card: %A" (getCardValue drawCard)
+let handContainsAce (hand:Hand) : bool =
+  List.exists (fun card -> 
+    match card.Face with
+    | Some Ace -> true
+    | _ -> false
+    ) hand
+
+(*
+let createHand deck : Hand =
+  [deck.drawCardFromDeck(); deck.drawCardFromDeck()]
+*)
+
+// Define deck class
+// Forbedring: Skal ikke kunne trække fra tomt dæk
+type DeckCls () =
+  let mutable deck : Deck = createDeck
+  member this.drawCardFromDeck () : Card =
+    let shuffledDeck = shuffleDeck deck
+    let n = shuffledDeck.Length - 1
+    deck <- shuffledDeck.[1 .. n]
+    shuffledDeck.[0]
+  member this.getDeck () : Deck = deck
+  member this.getDeckSize () : int = deck.Length
+  member this.printDeck () =
+    for c in deck do printCard c
+
+
