@@ -26,7 +26,6 @@ type Face = | Two  | Three | Four | Five
 type Card = {Face:Face option; Suit:Suit option}
 type Deck = Card list
 type Hand = Card list
-type Score = Score of int
 
 let generateRandomNumber l =
   let gen = System.Random()

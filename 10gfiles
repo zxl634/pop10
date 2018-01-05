@@ -1,3 +1,8 @@
-10g0.fsx
+simpleJack.fs
+cards.fs
+simpleJackApp.fsx
+runApp.sh
+test.fsx
+runTests.sh
 10gAndersRiis.tex
 10gAndersRiis.pdf
