@@ -4,19 +4,18 @@
 \begin{document}
 \maketitle
 \section*{Simple Jack}
-Mulige forbedringer:
-1) Burde ikke kunne trække fra et dæk, hvor der ikke er flere kort.
-2) Tjekke, om der er mere end et es på hånden
-\newpage 
-\appendix
-\section*{Appendiks}
-\subsection*{Kildekode og tests}
-\subsubsection*{simpleJack.fs}
-\lstinputlisting[caption={\lstname}, label=lst:simpleJack]{simpleJack.fs}
-\subsubsection*{simpleJackApp.fsx}
-\lstinputlisting[caption={\lstname}, label=lst:simpleJackApp]{simpleJackApp.fsx}
-\subsubsection*{cards.fs}
-\lstinputlisting[caption={\lstname}, label=lst:cards]{cards.fs}
+Programmet består af tre filer, nemlig simpleJack.fs, cards.fs og simpleJackApp.fsx. Spillet kan køres med runApp.sh, der er et mindre bash-script, der compiler og kalder mono.
+
+I cards.fs defineres de forskellige typer af kort ved at bruge discriminated unions m.v. Her defineres blandt andet Suit (kulør) og Face (værdi), samt recorden Card, der samler en kulør og en værdi. Derudover defineres Deck, der er liste af kort og Hand, der er også er en liste med kort. Endvidere findes en række hjælpe-funktioner, fx constructCard, printCard og cardString, der anvendes til hhv. at lave et kort baseret på en kulør og en værdi eller til at vise kort på en pæn måde.
+
+I cards.fs findes også funktioner til at lave et dæk med 52 kort med alle kombinationer af kulør og værdi, fx shuffleDeck og createDeck. Der findes også funktioner til at trække kort, der dog endnu ikke tager hånd om den situation, hvor der trækkes fra et tomt dæk. Sidst i filen findes funktioner til at udregne værdien af en hånd og tjekke, om der er findes et es i en hånd. Denne funktion er ikke perfekt, da den kun tjekker for, om der er et es på hånden.
+
+Der defineres også en klasse med et dæk til at holde styr på, om der er trukket et kort eller ej.
+
+I filen simpleJack.fs defineres to klasser, nemlig Player og Table, der benyttes i spillet. I filen simpleJackApp.fsx spilles spillet ved at danne et bord med tre spillere og tage en tur. Hele spillet kan spilles ved at køre ./runApp.sh.
+
+I filen test.fsx foretages en række test af funktionerne og metoderne i spillet. disse kan køres med ./runTests.sh.
+
 \subsection*{Filer i afleveringen}
 \VerbatimInput{10gfiles}
 \end{document}

@@ -42,13 +42,6 @@ type Player (hand:Hand,AI:bool) =
     privateGetValueOfHand hand
   member this.hit (card:Card) =
         privateAddCard card
-  member this.getPlayerStatus () =
-    let score = privateGetValueOfHand hand
-    match score with
-    | s when s < 21 -> "Still in the game!" 
-    | s when s > 21 -> "Bust!"
-    | s when s = 21 -> "SimpleJack!"
-    | _ -> "Nothing..." // To prevent compiler complaint about incomplete pattern
 
 /// <summary>Define the class table</summary>
 /// <remarks>First player is always human, the rest is AI. The last player is always dealer (also AI).</remarks>
