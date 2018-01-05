@@ -2,9 +2,12 @@ module simpleJack
 
 open Cards
 
+/// <summary>Define the class player</summary>
+/// <param name="hand">Specify a hand of the player</param>
+/// <param name="AI">Specify whether the player should be human or AI (true/false)</param>
 type Player (hand:Hand,AI:bool) =
-  //let AI = AI // Bestemmer, om det er AI eller ej
   let mutable hand : Hand = hand 
+  /// <summary>Calculate the value of the hand</summary>
   let privateGetValueOfHand (hand:Hand) : int =
     let value = List.fold (fun acc x -> acc + (getCardValue x)) 0 hand 
     if value > 21 then
@@ -16,6 +19,7 @@ type Player (hand:Hand,AI:bool) =
     else
       value
 
+  /// <summary>Add (random) card to hand</summary>
   let privateAddCard (card:Card) =
     hand <- card :: hand
   member this.AI () = AI
@@ -46,6 +50,9 @@ type Player (hand:Hand,AI:bool) =
     | s when s = 21 -> "SimpleJack!"
     | _ -> "Nothing..." // To prevent compiler complaint about incomplete pattern
 
+/// <summary>Define the class table</summary>
+/// <remarks>First player is always human, the rest is AI. The last player is always dealer (also AI).</remarks>
+/// <param name="numberOfPlayers">Specify number of players</param>
 type Table (numberOfPlayers : int) =
   /// Define number of players
   let numberOfPlayers = numberOfPlayers
@@ -106,7 +113,7 @@ type Table (numberOfPlayers : int) =
       let mutable player = players.[i-1]
       str <- str + player.AIstring() + ":\n" + player.stringHand()
     str
-
+  ///<summary>Define a turn of the game</summary>
   member this.turn () =
     System.Console.Write ("Press enter to start turn")
     let key = System.Console.ReadKey true
